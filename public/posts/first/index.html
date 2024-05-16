@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>揭秘Rust：为何它能成为系统级编程的明日之星？ - My Blog</title><meta name="Description" content="This is daijinma’s personal logs"><meta property="og:url" content="http://localhost:1313/posts/first/">
+  <meta property="og:site_name" content="My Blog">
+  <meta property="og:title" content="揭秘Rust：为何它能成为系统级编程的明日之星？">
+  <meta property="og:description" content="Rust是系统级编程语言，支持OS内核编程与用户态编程，标准库包括CORE、ALLOC和STD库。本书适合资深C/C&#43;&#43;或Rust程序员，用于深入了解Rust及其标准库，不适用于初学者。
+Rust被设计为能编写操作系统（OS）内核的系统级编程语言，使用静态编译，不采用GC（Garbage Collection）机制。Rust具备现代编程语言的高效率语法，且开发的应用程序具有类似C语言的性能，并在代码编译阶段就能保证内存安全、并发安全、分支安全等安全性。
+现代编程语言通常集成标准库。编程语言的众多关键特性都由标准库实现。采用GC机制的现代编程语言Java和Python，主要用于编写用户态程序。它们的标准库只需要支持用户态模型即可。因为是系统级编程语言，所以Rust的标准库要支持OS内核编程与用户态编程两种模型。同为系统级编程语言的C语言解决这个问题的方法是只提供用户态模型的标准库，OS内核的库由各OS自行实现。
+Rust的现代编程语言特性决定了其标准库无法把OS内核编程与用户态编程区分成完全独立的两部分，所以只能更细致地进行组件设计。Rust的标准库主要包括3个组件：语言核心库——CORE库、智能指针库——ALLOC库、用户态——STD库。
+Rust的标准库的调用关系如图1-1所示。
+图1-1 Rust的标准库的调用关系
+以上内容摘自《深入Rust标准库：必备的Rust语言高级指南》
+目标读者 本书不适合初学编程的读者。本书的最佳学习对象是资深的、掌握了Rust初步语法的C/C&#43;&#43;程序员。本书也适合已经对Rust基础语法比较熟悉的，希望对Rust有更深了解的，尤其是希望进行操作系统内核编程或通用框架编程的程序员。对于资深的Java、Python、Go程序员，可以将本书作为与其他编程语言相比较的一个参考。
+阅读本书之前，读者应该已经学习过官方教程《Rust程序设计语言》。本书不是标准库参考手册，如需要参考手册，请见《Rust标准库参考手册》。">
+  <meta property="og:locale" content="zh_cn">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2024-05-15T18:12:44+08:00">
+    <meta property="article:modified_time" content="2024-05-15T18:12:44+08:00">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="揭秘Rust：为何它能成为系统级编程的明日之星？">
+  <meta name="twitter:description" content="Rust是系统级编程语言，支持OS内核编程与用户态编程，标准库包括CORE、ALLOC和STD库。本书适合资深C/C&#43;&#43;或Rust程序员，用于深入了解Rust及其标准库，不适用于初学者。
+Rust被设计为能编写操作系统（OS）内核的系统级编程语言，使用静态编译，不采用GC（Garbage Collection）机制。Rust具备现代编程语言的高效率语法，且开发的应用程序具有类似C语言的性能，并在代码编译阶段就能保证内存安全、并发安全、分支安全等安全性。
+现代编程语言通常集成标准库。编程语言的众多关键特性都由标准库实现。采用GC机制的现代编程语言Java和Python，主要用于编写用户态程序。它们的标准库只需要支持用户态模型即可。因为是系统级编程语言，所以Rust的标准库要支持OS内核编程与用户态编程两种模型。同为系统级编程语言的C语言解决这个问题的方法是只提供用户态模型的标准库，OS内核的库由各OS自行实现。
+Rust的现代编程语言特性决定了其标准库无法把OS内核编程与用户态编程区分成完全独立的两部分，所以只能更细致地进行组件设计。Rust的标准库主要包括3个组件：语言核心库——CORE库、智能指针库——ALLOC库、用户态——STD库。
+Rust的标准库的调用关系如图1-1所示。
+图1-1 Rust的标准库的调用关系
+以上内容摘自《深入Rust标准库：必备的Rust语言高级指南》
+目标读者 本书不适合初学编程的读者。本书的最佳学习对象是资深的、掌握了Rust初步语法的C/C&#43;&#43;程序员。本书也适合已经对Rust基础语法比较熟悉的，希望对Rust有更深了解的，尤其是希望进行操作系统内核编程或通用框架编程的程序员。对于资深的Java、Python、Go程序员，可以将本书作为与其他编程语言相比较的一个参考。
+阅读本书之前，读者应该已经学习过官方教程《Rust程序设计语言》。本书不是标准库参考手册，如需要参考手册，请见《Rust标准库参考手册》。">
+<meta name="application-name" content="My cool site">
+<meta name="apple-mobile-web-app-title" content="My cool site"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://localhost:1313/posts/first/" /><link rel="next" href="http://localhost:1313/posts/2/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="/lib/fontawesome-free/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"></noscript><link rel="preload" href="/lib/animate/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="/lib/animate/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "揭秘Rust：为何它能成为系统级编程的明日之星？",
+        "inLanguage": "zh-cn",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "http:\/\/localhost:1313\/posts\/first\/"
+        },"genre": "posts","wordcount":  12 ,
+        "url": "http:\/\/localhost:1313\/posts\/first\/","datePublished": "2024-05-15T18:12:44+08:00","dateModified": "2024-05-15T18:12:44+08:00","publisher": {
+            "@type": "Organization",
+            "name": ""},"author": {
+                "@type": "Person",
+                "name": "Author"
+            },"description": ""
+    }
+    </script></head>
+    <body data-header-desktop="fixed" data-header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="My Blog">jinma的个人记录</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a></div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="My Blog">jinma的个人记录</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a></div>
+    </div>
+</header><main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">揭秘Rust：为何它能成为系统级编程的明日之星？</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>Author</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2024-05-15">2024-05-15</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;12 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;One minute&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  data-kept="">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents"></nav></div>
+            </div><div class="content" id="content"><p>Rust是系统级编程语言，支持OS内核编程与用户态编程，标准库包括CORE、ALLOC和STD库。本书适合资深C/C++或Rust程序员，用于深入了解Rust及其标准库，不适用于初学者。</p>
+<p>Rust被设计为能编写操作系统（OS）内核的系统级编程语言，使用静态编译，不采用GC（Garbage Collection）机制。Rust具备现代编程语言的高效率语法，且开发的应用程序具有类似C语言的性能，并在代码编译阶段就能保证内存安全、并发安全、分支安全等安全性。</p>
+<p>现代编程语言通常集成标准库。编程语言的众多关键特性都由标准库实现。采用GC机制的现代编程语言Java和Python，主要用于编写用户态程序。它们的标准库只需要支持用户态模型即可。因为是系统级编程语言，所以Rust的标准库要支持OS内核编程与用户态编程两种模型。同为系统级编程语言的C语言解决这个问题的方法是只提供用户态模型的标准库，OS内核的库由各OS自行实现。</p>
+<p>Rust的现代编程语言特性决定了其标准库无法把OS内核编程与用户态编程区分成完全独立的两部分，所以只能更细致地进行组件设计。Rust的标准库主要包括3个组件：语言核心库——CORE库、智能指针库——ALLOC库、用户态——STD库。</p>
+<p>Rust的标准库的调用关系如图1-1所示。</p>
+<p>图1-1 Rust的标准库的调用关系</p>
+<p>以上内容摘自《深入Rust标准库：必备的Rust语言高级指南》</p>
+<p>目标读者
+本书不适合初学编程的读者。本书的最佳学习对象是资深的、掌握了Rust初步语法的C/C++程序员。本书也适合已经对Rust基础语法比较熟悉的，希望对Rust有更深了解的，尤其是希望进行操作系统内核编程或通用框架编程的程序员。对于资深的Java、Python、Go程序员，可以将本书作为与其他编程语言相比较的一个参考。</p>
+<p>阅读本书之前，读者应该已经学习过官方教程《Rust程序设计语言》。本书不是标准库参考手册，如需要参考手册，请见《Rust标准库参考手册》。</p>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2024-05-15</span>
+            </div></div>
+        <div class="post-info-line">
+            <div class="post-info-md"></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="http://localhost:1313/posts/first/" data-title="揭秘Rust：为何它能成为系统级编程的明日之星？"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="http://localhost:1313/posts/first/"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Hacker News" data-sharer="hackernews" data-url="http://localhost:1313/posts/first/" data-title="揭秘Rust：为何它能成为系统级编程的明日之星？"><i class="fab fa-hacker-news fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="http://localhost:1313/posts/first/" data-title="揭秘Rust：为何它能成为系统级编程的明日之星？"><i data-svg-src="/lib/simple-icons/icons/line.min.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="http://localhost:1313/posts/first/" data-title="揭秘Rust：为何它能成为系统级编程的明日之星？"><i class="fab fa-weibo fa-fw" aria-hidden="true"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+            <a href="/posts/2/" class="next" rel="next" title="技术新手必备知识——前后端差异！">技术新手必备知识——前后端差异！<i class="fas fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
+</div>
+</article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2022 - 2024</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank"></a></span><span class="icp-splitter">&nbsp;|&nbsp;</span><br class="icp-br"/>
+                    <span class="icp"><a target='_blank' href='https://beian.miit.gov.cn/'>冀ICP备20003458号-1</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
+            </a>
+        </div><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js"></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript" src="/lib/sharer/sharer.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":50},"comment":{}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>
