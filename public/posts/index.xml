@@ -1,19 +1,42 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Posts on 生活工作记录</title>
-    <link>https://example.org/posts/</link>
-    <description>Recent content in Posts on 生活工作记录</description>
-    <generator>Hugo</generator>
-    <language>zh-cn</language>
-    <lastBuildDate>Wed, 15 May 2024 18:12:44 +0800</lastBuildDate>
-    <atom:link href="https://example.org/posts/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>揭秘Rust：为何它能成为系统级编程的明日之星？</title>
-      <link>https://example.org/posts/first/</link>
-      <pubDate>Wed, 15 May 2024 18:12:44 +0800</pubDate>
-      <guid>https://example.org/posts/first/</guid>
-      <description>Rust是系统级编程语言，支持OS内核编程与用户态编程，标准库包括CORE、ALLOC和STD库。本书适合资深C/C++或Rust程序员，用于深入了解Rust及其标准库，不适用于初学者。&#xA;Rust被设计为能编写操作系统（OS）内核的系统级编程语言，使用静态编译，不采用GC（Garbage Collection）机制。Rust具备现代编程语言的高效率语法，且开发的应用程序具有类似C语言的性能，并在代码编译阶段就能保证内存安全、并发安全、分支安全等安全性。&#xA;现代编程语言通常集成标准库。编程语言的众多关键特性都由标准库实现。采用GC机制的现代编程语言Java和Python，主要用于编写用户态程序。它们的标准库只需要支持用户态模型即可。因为是系统级编程语言，所以Rust的标准库要支持OS内核编程与用户态编程两种模型。同为系统级编程语言的C语言解决这个问题的方法是只提供用户态模型的标准库，OS内核的库由各OS自行实现。&#xA;Rust的现代编程语言特性决定了其标准库无法把OS内核编程与用户态编程区分成完全独立的两部分，所以只能更细致地进行组件设计。Rust的标准库主要包括3个组件：语言核心库——CORE库、智能指针库——ALLOC库、用户态——STD库。&#xA;Rust的标准库的调用关系如图1-1所示。&#xA;图1-1 Rust的标准库的调用关系&#xA;以上内容摘自《深入Rust标准库：必备的Rust语言高级指南》&#xA;目标读者 本书不适合初学编程的读者。本书的最佳学习对象是资深的、掌握了Rust初步语法的C/C++程序员。本书也适合已经对Rust基础语法比较熟悉的，希望对Rust有更深了解的，尤其是希望进行操作系统内核编程或通用框架编程的程序员。对于资深的Java、Python、Go程序员，可以将本书作为与其他编程语言相比较的一个参考。&#xA;阅读本书之前，读者应该已经学习过官方教程《Rust程序设计语言》。本书不是标准库参考手册，如需要参考手册，请见《Rust标准库参考手册》。</description>
-    </item>
-  </channel>
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>All Posts - 生活工作记录</title>
+        <link>http://localhost:1313/posts/</link>
+        <description>All Posts | 生活工作记录</description>
+        <generator>Hugo -- gohugo.io</generator><language>zh-cn</language><lastBuildDate>Thu, 16 May 2024 09:59:21 &#43;0800</lastBuildDate><atom:link href="http://localhost:1313/posts/" rel="self" type="application/rss+xml" /><item>
+    <title>技术新手必备知识——前后端差异！</title>
+    <link>http://localhost:1313/posts/2/</link>
+    <pubDate>Thu, 16 May 2024 09:59:21 &#43;0800</pubDate>
+    <author>Author</author>
+    <guid>http://localhost:1313/posts/2/</guid>
+    <description><![CDATA[前端和后端是计算机领域中常见的概念。它们指的是软件开发中的两个方面：可视化的前端和执行逻辑的后端。笔者将对前端和后端进行详细的介绍，并对它们的区别进行分析。
+什么是前端和后端 前端 前端也被称为客户端或用户界面，是指用户直接看到和使用的部分。通常包括网页的布局、设计、交互和响应等方面。前端工程师负责设计和开发用户可视化的网页产品，且要确保网页能够在不同的浏览器和设备上正确显示。
+前端工程师需要掌握各种前端技术，如HTML（超文本标记语言）、CSS（层叠样式表）和JavaScript等。其中，HTML主要用于定义网页结构和内容，CSS用于设计网页的外观和布局，JavaScript用于实现网页的交互和动态效果。此外，前端开发还需要考虑用户体验，如网页的导航、页面加载速度和响应速度等。
+后端 后端也被称为服务端或业务逻辑层，用于处理和管理网站的各种数据。它通常包括数据处理、数据库管理和服务器端编程等方面。后端工程师负责设计和开发应用系统、管理用户数据、提供API（应用程序接口）等。
+后端工程师需要掌握各种后端技术，如服务器端脚本语言（如PHP、Python、Java等）、数据库（如MySQL、Oracle等）和服务器配置等。此外，后端开发还需要考虑系统的安全性、性能和可扩展性等。
+前端和后端的区别 前端和后端虽然都是软件开发中的重要部分，但它们有很大的区别。
+技术不同 前端负责可视化的部分，需要掌握HTML、CSS和JavaScript等技术。后端负责数据处理和服务器端编程等，需要掌握服务器端脚本语言、数据库和服务器配置等技术。
+职责不同 前端主要负责网页的设计和交互，后端主要负责数据管理和开发应用系统。前端工程师需要考虑用户体验和网页性能等因素，后端工程师需要考虑系统的安全性和可扩展性等因素。
+工作方式不同 前端工程师通常使用前端开发工具和浏览器调试工具进行开发，而后端工程师则需要在服务器上部署应用程序、配置服务器和数据库等。
+目标不同 前端的目标是使页面具有良好的用户体验，使用户易于理解和操作。后端的目标是使网站的数据安全且易于管理，提供API以供其他软件使用。
+前后端的协作 在实际的软件开发中，前端和后端通常需要密切协作。它们可以通过API进行通信，使前端和后端之间相互独立。在协作过程中，前端开发人员需要将网页设计相关的信息传递给后端，后端开发人员则需要将数据处理的相关信息传递给前端。两者的紧密协作是软件开发成功的关键。
+总结 前端和后端是软件开发中两个非常重要的方面。前端负责网页的可视化，后端负责网页的数据处理，两者之间需要密切协作。虽然两个方向有很大的区别，但协作的关键是相互理解和尊重。]]></description>
+</item>
+<item>
+    <title>揭秘Rust：为何它能成为系统级编程的明日之星？</title>
+    <link>http://localhost:1313/posts/first/</link>
+    <pubDate>Wed, 15 May 2024 18:12:44 &#43;0800</pubDate>
+    <author>Author</author>
+    <guid>http://localhost:1313/posts/first/</guid>
+    <description><![CDATA[Rust是系统级编程语言，支持OS内核编程与用户态编程，标准库包括CORE、ALLOC和STD库。本书适合资深C/C++或Rust程序员，用于深入了解Rust及其标准库，不适用于初学者。
+Rust被设计为能编写操作系统（OS）内核的系统级编程语言，使用静态编译，不采用GC（Garbage Collection）机制。Rust具备现代编程语言的高效率语法，且开发的应用程序具有类似C语言的性能，并在代码编译阶段就能保证内存安全、并发安全、分支安全等安全性。
+现代编程语言通常集成标准库。编程语言的众多关键特性都由标准库实现。采用GC机制的现代编程语言Java和Python，主要用于编写用户态程序。它们的标准库只需要支持用户态模型即可。因为是系统级编程语言，所以Rust的标准库要支持OS内核编程与用户态编程两种模型。同为系统级编程语言的C语言解决这个问题的方法是只提供用户态模型的标准库，OS内核的库由各OS自行实现。
+Rust的现代编程语言特性决定了其标准库无法把OS内核编程与用户态编程区分成完全独立的两部分，所以只能更细致地进行组件设计。Rust的标准库主要包括3个组件：语言核心库——CORE库、智能指针库——ALLOC库、用户态——STD库。
+Rust的标准库的调用关系如图1-1所示。
+图1-1 Rust的标准库的调用关系
+以上内容摘自《深入Rust标准库：必备的Rust语言高级指南》
+目标读者 本书不适合初学编程的读者。本书的最佳学习对象是资深的、掌握了Rust初步语法的C/C++程序员。本书也适合已经对Rust基础语法比较熟悉的，希望对Rust有更深了解的，尤其是希望进行操作系统内核编程或通用框架编程的程序员。对于资深的Java、Python、Go程序员，可以将本书作为与其他编程语言相比较的一个参考。
+阅读本书之前，读者应该已经学习过官方教程《Rust程序设计语言》。本书不是标准库参考手册，如需要参考手册，请见《Rust标准库参考手册》。]]></description>
+</item>
+</channel>
 </rss>
